@@ -81,7 +81,7 @@ const Collection = () => {
 
   useEffect(()=>{
       applyFilter();
-  },[category,subCategory,search,showSearch])// whenever the category or subcategory is updates or changes you call the applyFilter function
+  },[category,subCategory,search,showSearch,products])// whenever the category or subcategory is updates or changes you call the applyFilter function
 
   useEffect(()=>{
     sortProduct();
