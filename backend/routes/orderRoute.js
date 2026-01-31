@@ -11,14 +11,14 @@ orderRouter.post('/status',adminAuth,updateStatus);
 
 //Payment Features
 orderRouter.post('/place',userAuth,placeOrder);
-orderRouter.post('/stripe',authUser,placeOrderStripe);
+orderRouter.post('/stripe',userAuth,placeOrderStripe);
 
 
 //User Orders for Frontend
 orderRouter.post('/userorders',userAuth,userOrders);
 
 // verify payment
-orderRouter.post('/verifyStripe',authUser,verifyStripe)
+orderRouter.post('/verifyStripe',userAuth,verifyStripe)
 
 
 export default orderRouter
