@@ -12,6 +12,8 @@ import Login from './pages/Login'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import SearchBar from './components/SearchBar'
+import Verify from './pages/verify'
+
 
 const App = () => {
   return (
@@ -29,6 +31,7 @@ const App = () => {
         <Route path='/cart' element={<Cart/>}/>
         <Route path='/orders' element={<Orders/>}/>
         <Route path='/login' element={<Login/>}/>
+        <Route path='/verify' element={<Verify/>}/>
       </Routes>
       <Footer /> 
     </div>
