@@ -15,19 +15,7 @@ connectDB();
 connectCloudinary();
 
 //Middlewares
-const corsOptions = {
-  origin: [
-    'http://localhost:5173',
-    'http://localhost:5174',
-    'https://e-commerce-frontend-seven-gray.vercel.app',
-    'https://e-commerce-admin-vercel.vercel.app' // Add your admin URL if different
-  ],
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'token']
-};
-
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 
 //API Endpoints

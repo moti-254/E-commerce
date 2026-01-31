@@ -134,13 +134,7 @@ import { toast } from "react-toastify";
            
             const response= await axios.post(backendUrl + '/api/cart/get',{},{headers:{token}})
             if (response.data.success) {
-                const cartData = response.data.cartData || {};
-                // Ensure cartData is an object, not a string
-                if (typeof cartData === 'string') {
-                    setCartItems({});
-                } else {
-                    setCartItems(cartData);
-                }
+                setCartItems(response.data.cartData)
             }
         } catch (error) {
             console.log(error);
