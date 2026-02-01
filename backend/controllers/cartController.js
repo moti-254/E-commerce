@@ -1,5 +1,12 @@
 import userModel from "../models/userModel.js"
 
+const normalizeCartData = (cartData) => {
+    if (cartData && typeof cartData === "object" && !Array.isArray(cartData)) {
+        return cartData;
+    }
+    return {};
+};
+
 
 
 //add product to cart
@@ -10,7 +17,7 @@ const addToCart= async (req,res)=> {
      const{userId, itemId, size}= req.body
 
      const userData= await userModel.findById(userId)
-     let cartData= await userData.cartData;
+     let cartData=  normalizeCartData(userData.cartData);
 
      if (cartData[itemId]) {
         if (cartData[itemId][size]) {
@@ -43,7 +50,7 @@ const updateCart= async (req,res)=> {
       const{userId, itemId, size, quantity}= req.body
 
       const userData= await userModel.findById(userId)
-      let cartData= await userData.cartData;
+      let cartData= normalizeCartData(userData.cartData);
 
       cartData[itemId][size]= quantity;
 
@@ -67,8 +74,10 @@ const getUserCart= async (req,res)=> {
         const{ userId }= req.body
 
         const userData= await userModel.findById(userId)
-        let cartData= await userData.cartData;
-
+        let cartData= normalizeCartData(userData.cartData);
+        if (cartData !== userData.cartData) {
+            await userModel.findByIdAndUpdate(userId, { cartData });
+        }
         res.json({success:true,cartData})
 
         

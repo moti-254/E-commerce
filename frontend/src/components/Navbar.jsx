@@ -13,7 +13,7 @@ const Navbar = () => {
         navigate('/login');
         localStorage.removeItem('token');
         setToken('');
-        setCartItems('')
+        setCartItems({});
     }
 
     
